@@ -89,8 +89,19 @@ export default function Footer() {
             ))}
           </nav>
         </div>
-        <div className="container-x border-t border-white/5 py-5 text-center text-xs text-white/35">
-          © {new Date().getFullYear()} Auspanel Façades. All rights reserved.
+        <div className="container-x flex flex-col items-center justify-between gap-2 border-t border-white/5 py-5 text-xs text-white/35 sm:flex-row">
+          <p>© {new Date().getFullYear()} Auspanel Façades. All rights reserved.</p>
+          <p>
+            Managed by{" "}
+            <a
+              href="https://empreus.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/55 transition-colors hover:text-[var(--accent)]"
+            >
+              Empreus IT Support
+            </a>
+          </p>
         </div>
       </div>
     </footer>
