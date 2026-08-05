@@ -8,9 +8,10 @@ import SectionHeading from "@/components/SectionHeading";
 import { CapIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "About Us - Auspanel Façades",
+  title: "About Us",
   description:
     "Auspanel has over 25 years experience in the facade industry and is renowned for its innovative facade solutions.",
+  alternates: { canonical: "/about-us" },
 };
 
 export default function AboutPage() {

@@ -5,9 +5,10 @@ import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Auspanel Façades",
+  title: "Contact Us",
   description:
     "Get in touch with Auspanel to learn more about our exciting range of products and services tailored to meet the requirements of our clients.",
+  alternates: { canonical: "/contact-us" },
 };
 
 const DARK = "#0d1615";

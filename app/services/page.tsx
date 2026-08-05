@@ -8,9 +8,10 @@ import SectionHeading from "@/components/SectionHeading";
 import { CapIcon, Arrow } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "Services - Auspanel Façades",
+  title: "Services",
   description:
     "AUSPANEL are leaders in the commercial facades industry Australia wide, and can design, manufacture and provide installation services to commercial clients.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auspanel Façades
 
-## Getting Started
+Marketing site for Auspanel Façades — Queensland's design & construct commercial facade specialists. Built with Next.js 16 (App Router), TypeScript and Tailwind CSS v4.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`/` · `/about-us` · `/services` · `/projects` · `/contact-us`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contact form (Resend)
 
-## Learn More
+The contact form posts to `app/api/contact/route.ts`, which sends email via [Resend](https://resend.com) to `info@auspanel.com.au`.
 
-To learn more about Next.js, take a look at the following resources:
+Set these environment variables (locally in `.env.local`, and in Vercel → Project → Settings → Environment Variables):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Required | Notes |
+| --- | --- | --- |
+| `RESEND_API_KEY` | Yes (to deliver) | Resend API key. Without it the form still works and returns success, but only logs the submission. |
+| `CONTACT_FROM` | Optional | Sender, e.g. `Auspanel Website <noreply@auspanel.com.au>`. Domain must be verified in Resend. Defaults to Resend's test sender. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The endpoint validates input, caps field lengths, and uses a hidden honeypot field to reject bots.
 
-## Deploy on Vercel
+## SEO
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Per-page metadata + title template, canonical URLs, Open Graph / Twitter cards
+- `app/robots.ts` and `app/sitemap.ts` (served at `/robots.txt`, `/sitemap.xml`)
+- JSON-LD `GeneralContractor` structured data with NAP details in the root layout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Security
+
+Security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) are set in `next.config.ts`. `x-powered-by` is disabled.
+
+## Deployment
+
+Connected to Vercel via Git — pushing to `main` triggers a production deploy. Remember to set the environment variables above in Vercel.
+
+---
+
+Managed by [Empreus IT Support](https://empreus.com.au).

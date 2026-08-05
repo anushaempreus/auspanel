@@ -31,6 +31,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* honeypot: hidden from users, catches bots */}
+      <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+        <input name="company" tabIndex={-1} autoComplete="off" />
+      </div>
       <input name="name" required placeholder="Name" className={field} />
       <input
         name="email"

@@ -6,9 +6,10 @@ import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
 
 export const metadata: Metadata = {
-  title: "Projects - Auspanel Façades",
+  title: "Projects",
   description:
     "A selection of commercial façade projects delivered by Auspanel across Queensland and Australia.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
